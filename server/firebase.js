@@ -1,8 +1,16 @@
 const admin = require('firebase-admin');
 
 if (!admin.apps.length) {
-  const privateKey = process.env.FIREBASE_PRIVATE_KEY
-    ?.replace(/\\n/g, '\n')
+  // Parse the private key carefully - handle all edge cases
+  let privateKey = process.env.FIREBASE_PRIVATE_KEY || ''
+  
+  // Remove surrounding quotes if present
+  if (privateKey.startsWith('"') && privateKey.endsWith('"')) {
+    privateKey = privateKey.slice(1, -1)
+  }
+  
+  // Replace literal \n with actual newlines
+  privateKey = privateKey.replace(/\\n/g, '\n')
 
   admin.initializeApp({
     credential: admin.credential.cert({
@@ -11,7 +19,7 @@ if (!admin.apps.length) {
       clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
     }),
   });
-  console.log('Firebase initialized')
+  console.log('Firebase initialized OK')
 }
 
 const db = admin.firestore();
