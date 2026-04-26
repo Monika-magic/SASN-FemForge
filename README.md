@@ -72,9 +72,9 @@ Firebase Firestore (NoSQL, real-time)
 - Mobile-first responsive design
 
 ## Live Demo
-- Frontend: [deployed link]
-- Backend API: [deployed link]
-- GitHub: [repo link]
+- Frontend: https://sasn-fem-forge.vercel.app
+- Backend API: https://sasn-femforge.onrender.com
+- GitHub: https://github.com/Monika-magic/SASN-FemForge
 
 ## Local Setup
 ```bash
